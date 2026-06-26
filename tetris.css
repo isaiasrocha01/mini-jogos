@@ -1,0 +1,449 @@
+/* ===========================
+   PET TETRIS
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#eef5fc;
+
+    font-family:"Segoe UI",sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    color:#4a5568;
+
+    user-select:none;
+
+}
+
+.screen{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+h1{
+
+    margin:25px;
+
+    font-size:2.6rem;
+
+    color:#ff7b93;
+
+    text-shadow:2px 2px white;
+
+}
+
+#main-container{
+
+    display:grid;
+
+    grid-template-columns:auto 250px;
+
+    gap:35px;
+
+    align-items:flex-start;
+
+}
+
+/*========================*/
+
+#game-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+/*========================*/
+
+#ui{
+
+    width:100%;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:15px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.stats{
+
+    display:flex;
+
+    justify-content:space-around;
+
+}
+
+.stat-box{
+
+    text-align:center;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+.value{
+
+    color:#1dd1a1;
+
+    font-size:24px;
+
+}
+
+/*========================*/
+
+.game-area{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:flex-start;
+
+}
+
+/*========================*/
+
+canvas{
+
+    background:#f8fbff;
+
+    border:6px solid white;
+
+    border-radius:22px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+#tetris{
+
+    width:300px;
+
+    height:600px;
+
+}
+
+#next{
+
+    width:120px;
+
+    height:120px;
+
+}
+
+/*========================*/
+
+.side-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.panel-box{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    width:170px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.panel-box h3{
+
+    color:#ff7b93;
+
+    margin-bottom:12px;
+
+    text-align:center;
+
+}
+
+.panel-box p{
+
+    margin:8px 0;
+
+    font-size:15px;
+
+}
+
+/*========================*/
+
+.instructions{
+
+    margin-top:18px;
+
+    color:#718096;
+
+    font-weight:600;
+
+}
+
+/*========================*/
+
+.buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:18px;
+
+}
+
+/*========================*/
+
+.btn-back{
+
+    background:white;
+
+    border:2px solid #d9e4f0;
+
+    border-radius:14px;
+
+    padding:12px 22px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    color:#4a5568;
+
+    transition:.25s;
+
+}
+
+.btn-back:hover{
+
+    background:#ff7b93;
+
+    color:white;
+
+    border-color:#ff7b93;
+
+}
+
+/*========================*/
+
+#leaderboard-panel{
+
+    width:230px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+#leaderboard-panel h2{
+
+    text-align:center;
+
+    color:#ff9f43;
+
+    margin-bottom:15px;
+
+}
+
+#leaderboard-list{
+
+    padding-left:20px;
+
+}
+
+#leaderboard-list li{
+
+    margin:10px 0;
+
+    font-weight:bold;
+
+}
+
+/*========================*/
+
+@media(max-width:900px){
+
+#main-container{
+
+grid-template-columns:1fr;
+
+}
+
+.game-area{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.side-panel{
+
+flex-direction:row;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+#leaderboard-panel{
+
+width:100%;
+
+}
+
+}
+
+/*========================*/
+
+.flash{
+
+animation:flash .25s;
+
+}
+
+@keyframes flash{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/*========================*/
+
+.game-over{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+background:rgba(255,255,255,.95);
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.2);
+
+text-align:center;
+
+}
+
+.game-over h2{
+
+color:#ff6b81;
+
+margin-bottom:15px;
+
+font-size:34px;
+
+}
+
+.game-over p{
+
+margin-bottom:15px;
+
+font-size:20px;
+
+}
+
+/*========================*/
+
+.score-pop{
+
+position:absolute;
+
+font-weight:bold;
+
+color:#1dd1a1;
+
+animation:pop .8s forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes pop{
+
+0%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateY(-50px);
+
+}
+
+}
