@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Block Collapse 🧱</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="custom-cursor-tool" style="position: fixed; pointer-events: none; font-size: 2rem; z-index: 9999; display: none; transform: translate(-50%, -50%);"></div>
+
+    <div class="screen active">
+        <h1>🧱 Pet Block Collapse</h1>
+        <div id="main-container">
+            <div class="collapse-container">
+                <div class="collapse-ui">
+                    <div class="stat-box">Pontos: <span id="collapse-score" class="value">0</span></div>
+                    <div class="stat-box" style="font-size:0.95rem; color:#718096;">Objetivo: Limpar a tela!</div>
+                </div>
+                
+                <div class="game-with-tools">
+                    <div id="tools-sidebar">
+                        <button class="tool-btn" id="tool-bomb" onclick="selectTool('bomb')">💣<span class="tool-count" id="count-bomb">2</span></button>
+                        <button class="tool-btn" id="tool-rocket" onclick="selectTool('rocket')">🚀<span class="tool-count" id="count-rocket">2</span></button>
+                        <button class="tool-btn" id="tool-bee" onclick="selectTool('bee')">🐝<span class="tool-count" id="count-bee">2</span></button>
+                        <button class="tool-btn" id="tool-plane" onclick="selectTool('plane')">✈️<span class="tool-count" id="count-plane">2</span></button>
+                        <button class="tool-btn" id="tool-ufo" onclick="selectTool('ufo')">🛸<span class="tool-count" id="count-ufo">1</span></button>
+                    </div>
+                    
+                    <canvas id="canvas-collapse" width="480" height="480"></canvas>
+                </div>
+
+                <div class="instructions" id="collapse-instructions">Combine 5+ blocos para ganhar itens! • Clique para usar o poder</div>
+                
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                    <a href="index.html" class="btn-back" style="margin: 0;">↩ Voltar ao Menu</a>
+                    <button onclick="resetCurrentGameBtn()" class="btn-back" style="margin: 0; background-color: #ff9f43; border-color: #ff9f43; color: white; cursor: pointer;">🔄 Reiniciar Jogo</button>
+                </div>
+            </div>
+
+            <div id="leaderboard-panel">
+                <h2>🏆 TOP PETS</h2>
+                <ol id="leaderboard-list"></ol>
+            </div>
+        </div>
+    </div>
+
+    <script src="collapse.js"></script>
+    <script>
+        window.onload = () => { initCollapseGame(); };
+    </script>
+</body>
+</html>
