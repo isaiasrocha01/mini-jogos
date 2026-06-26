@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Memory Match 🧠</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="screen active">
+        <h1>🧠 Pet Memory Match</h1>
+        <div id="main-container">
+            <div class="collapse-container">
+                <div class="collapse-ui">
+                    <div class="stat-box">Pontos: <span id="memory-score" class="value">0</span></div>
+                    <div class="stat-box">Tentativas: <span id="memory-moves" class="value">0</span></div>
+                </div>
+                
+                <div class="game-with-tools">
+                    <canvas id="canvas-memory" width="480" height="480"></canvas>
+                </div>
+
+                <div class="instructions" id="memory-instructions">Encontre todos os pares de pets! Combinar em sequência dá bônus!</div>
+                
+                <!-- Botões de Ação -->
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                    <a href="index.html" class="btn-back" style="margin: 0;">↩ Voltar ao Menu</a>
+                    <button onclick="resetMemoryGameBtn()" class="btn-back" style="margin: 0; background-color: #ff9f43; border-color: #ff9f43; color: white; cursor: pointer;">🔄 Reiniciar Jogo</button>
+                </div>
+            </div>
+
+            <div id="leaderboard-panel">
+                <h2>🏆 REGRAS</h2>
+                <div style="color: #a0aec0; font-size: 0.9rem; line-height: 1.5; padding: 10px;">
+                    <p>• Clique em uma carta para revelá-la.</p>
+                    <p>• Encontre o par idêntico.</p>
+                    <p>• <b>Acerto:</b> +100 pontos.</p>
+                    <p>• <b>Combo:</b> Acertar seguidamente multiplica os pontos!</p>
+                    <p>• <b>Erro:</b> -10 pontos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="memory.js"></script>
+    <script>
+        window.onload = () => { initMemoryGame(); };
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Path Finder 🐾</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="screen active">
+        <h1>🐾 Pet Path Finder</h1>
+        <div id="main-container">
+            <div class="collapse-container">
+                <div class="collapse-ui">
+                    <div class="stat-box">Nível: <span id="path-level" class="value">1</span></div>
+                    <div class="stat-box">Cliques: <span id="path-clicks" class="value">0</span></div>
+                </div>
+                
+                <div class="game-with-tools">
+                    <canvas id="canvas-path" width="480" height="480"></canvas>
+                </div>
+
+                <div class="instructions" id="path-instructions">Clique nos blocos para mudar a cor deles e conectar a Patinha 🐾 ao Osso 🦴!</div>
+                
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                    <a href="index.html" class="btn-back" style="margin: 0;">↩ Voltar ao Menu</a>
+                    <button onclick="resetPathGameBtn()" class="btn-back" style="margin: 0; background-color: #ff9f43; border-color: #ff9f43; color: white; cursor: pointer;">🔄 Reiniciar Jogo</button>
+                </div>
+            </div>
+
+            <div id="leaderboard-panel">
+                <h2>🏆 INSTRUÇÕES</h2>
+                <div style="color: #a0aec0; font-size: 0.9rem; line-height: 1.5; padding: 10px;">
+                    <p>1. O início é na patinha <b>🐾 (topo esquerdo)</b>.</p>
+                    <p>2. O destino é o osso <b>🦴 (base direita)</b>.</p>
+                    <p>3. Clique em qualquer bloco comum para rotacionar sua cor.</p>
+                    <p>4. Crie uma linha conectada de blocos com a <b>mesma cor</b> do bloco da patinha!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="path.js"></script>
+    <script>
+        window.onload = () => { initPathGame(); };
+    </script>
+</body>
+</html>
